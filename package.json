@@ -1,0 +1,25 @@
+{
+  "name": "lei-stream",
+  "version": "1.0.0",
+  "description": "Read/Write Stream",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -t 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leizongmin/node-lei-stream.git"
+  },
+  "keywords": [
+    "stream",
+    "read",
+    "write",
+    "line"
+  ],
+  "author": "Zongmin Lei <leizongmin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leizongmin/node-lei-stream/issues"
+  },
+  "homepage": "https://github.com/leizongmin/node-lei-stream"
+}
