@@ -21,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/leizongmin/node-lei-stream/issues"
   },
-  "homepage": "https://github.com/leizongmin/node-lei-stream"
+  "homepage": "https://github.com/leizongmin/node-lei-stream",
+  "dependencies": {
+    "async": "^1.0.0",
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^6.0.3"
+  }
 }
