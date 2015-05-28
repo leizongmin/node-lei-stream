@@ -57,4 +57,42 @@ describe('ReadLineStream', function () {
     
   });
   
+  it('#4 big file, autoNext=true', function (done) {
+    
+    var counter = 0;
+    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')), {
+      autoNext: true
+    });
+    s.on('data', function (data) {
+      counter++;
+    });
+    s.on('end', function () {
+      counter.should.equal(7627);
+      done();
+    });
+    
+  });
+  
+  it('#5 autoNext=true, custom encoding', function (done) {
+    
+    var counter = 0;
+    var counter2 = 0;
+    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
+      autoNext: true,
+      encoding: function (str) {
+        counter2++;
+        return str;
+      }
+    });
+    s.on('data', function (data) {
+      counter++;
+    });
+    s.on('end', function () {
+      counter.should.equal(93);
+      counter2.should.equal(93);
+      done();
+    });
+    
+  });
+  
 });
