@@ -2,7 +2,7 @@
   "name": "lei-stream",
   "version": "1.0.0",
   "description": "Read/Write Stream",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "mocha -t 5000"
   },
@@ -24,7 +24,8 @@
   "homepage": "https://github.com/leizongmin/node-lei-stream",
   "dependencies": {
     "async": "^1.0.0",
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "lei-utils": "^1.0.8"
   },
   "devDependencies": {
     "mocha": "^2.2.5",

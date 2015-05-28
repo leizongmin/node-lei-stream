@@ -1,0 +1,1 @@
+{"userId":"55652efe99a4eb45a9cbc59e","face1Id":"55652efe448ba1eb5af0728b","face2Id":"55652eff448ba1eb5af0728e","success":true,"score":14.88961,"isSc":true,"scResult":{"active_face_uuid":"cde33ef376ac42d9bebeef5a5065170f","list":[{"face_uuid":"cde33ef376ac42d9bebeef5a5065170f","score":14.88961}]},"timestamp":1432694529341}
