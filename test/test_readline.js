@@ -110,4 +110,17 @@ describe('ReadLineStream', function () {
     
   });
   
+  it('#7 simple', function (done) {
+    
+    var counter = 0;
+    stream.readLine(path.resolve(__dirname, 'files/json_small.txt')).go(function (data, next) {
+      counter++;
+      next();
+    }, function () {
+      counter.should.equal(93);
+      done();
+    });
+    
+  });
+  
 });

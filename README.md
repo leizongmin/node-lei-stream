@@ -9,16 +9,29 @@ Read/Write Stream
 npm install lei-stream --save
 ```
 
-## readLine
+## readLine 按行读取流
 
-按行读取流
+使用方法1：
+
+```javascript
+var readLine = require('lei-stream').readLine;
+
+readLine('./myfile.txt').go(function (data, next) {
+  console.log(data);
+  next();
+}, function () {
+  console.log('end');
+});
+```
+
+使用方法2：
 
 ```javascript
 var fs = require('fs');
-var readLineStream = require('lei-stream').readLine;
+var readLine = require('lei-stream').readLine;
 
 // readLineStream第一个参数为ReadStream实例，也可以为文件名
-var s = readLineStream(fs.createReadStream('./myfile.txt'), {
+var s = readLine(fs.createReadStream('./myfile.txt'), {
   // 换行符，默认\n
   newline: '\n',
   // 是否自动读取下一行，默认false
@@ -28,10 +41,14 @@ var s = readLineStream(fs.createReadStream('./myfile.txt'), {
     return JSON.parse(data);
   }
 });
+
+// 读取到一行数据时触发data事件
 s.on('data', function (data) {
   console.log(data);
   s.next();
 });
+
+// 流结束时触发end事件
 s.on('end', function () {
   console.log('end');
 });
