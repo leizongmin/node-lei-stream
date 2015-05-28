@@ -95,4 +95,19 @@ describe('ReadLineStream', function () {
     
   });
   
+  it('#6 filename', function (done) {
+    
+    var counter = 0;
+    var s = stream.readLine(path.resolve(__dirname, 'files/json_small.txt'));
+    s.on('data', function (data) {
+      counter++;
+      s.next();
+    });
+    s.on('end', function () {
+      counter.should.equal(93);
+      done();
+    });
+    
+  });
+  
 });

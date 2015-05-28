@@ -17,6 +17,7 @@ npm install lei-stream --save
 var fs = require('fs');
 var readLineStream = require('lei-stream').readLine;
 
+// readLineStream第一个参数为ReadStream实例，也可以为文件名
 var s = readLineStream(fs.createReadStream('./myfile.txt'), {
   // 换行符，默认\n
   newline: '\n',
