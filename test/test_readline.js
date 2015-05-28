@@ -42,4 +42,19 @@ describe('ReadLineStream', function () {
     
   });
   
+  it('#3 big file, autoNext=false', function (done) {
+    
+    var counter = 0;
+    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')));
+    s.on('data', function (data) {
+      counter++;
+      s.next();
+    });
+    s.on('end', function () {
+      counter.should.equal(7627);
+      done();
+    });
+    
+  });
+  
 });
