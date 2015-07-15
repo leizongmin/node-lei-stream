@@ -67,11 +67,20 @@ var s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
   // 编码器，可以为函数或字符串（内置编码器：json，base64），默认null
   encoding: function (data) {
     return JSON.stringify(data);
-  }
+  },
+  // 缓存的行数，默认为0（表示不缓存），此选项主要用于优化写文件性能，当数量缓存的内容超过该数量时再一次性写入到流中，可以提高写速度
+  cacheLines: 0
 });
 
 // 写一行
-s.write(data);
+s.write(data, function () {
+  // 回调函数可选
+  console.log('wrote');
+});
 
-
+// 结束
+s.end(function () {
+  // 回调函数可选
+  console.log('end');
+});
 ```
