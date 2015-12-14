@@ -73,7 +73,38 @@ describe('ReadLineStream', function () {
 
   });
 
-  it('#5 autoNext=true, custom encoding', function (done) {
+    it('#5 big number file, autoNext=false', function (done) {
+
+    var counter = 0;
+    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')));
+    s.on('data', function (data) {
+      counter++;
+      s.next();
+    });
+    s.on('end', function () {
+      counter.should.equal(1000000);
+      done();
+    });
+
+  });
+
+  it('#6 big number file, autoNext=true', function (done) {
+
+    var counter = 0;
+    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')), {
+      autoNext: true
+    });
+    s.on('data', function (data) {
+      counter++;
+    });
+    s.on('end', function () {
+      counter.should.equal(1000000);
+      done();
+    });
+
+  });
+
+  it('#7 autoNext=true, custom encoding', function (done) {
 
     var counter = 0;
     var counter2 = 0;
@@ -95,7 +126,7 @@ describe('ReadLineStream', function () {
 
   });
 
-  it('#6 filename', function (done) {
+  it('#8 filename', function (done) {
 
     var counter = 0;
     var s = stream.readLine(path.resolve(__dirname, 'files/json_small.txt'));
@@ -110,7 +141,7 @@ describe('ReadLineStream', function () {
 
   });
 
-  it('#7 simple', function (done) {
+  it('#9 simple', function (done) {
 
     var counter = 0;
     stream.readLine(path.resolve(__dirname, 'files/json_small.txt')).go(function (data, next) {
