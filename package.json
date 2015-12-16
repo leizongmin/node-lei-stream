@@ -4,7 +4,8 @@
   "description": "Read/Write Stream",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "mocha -t 5000"
+    "test": "mocha -t 5000",
+    "debug_test": "export DEBUG='lei:stream:*' && mocha -t 120000"
   },
   "repository": {
     "type": "git",
