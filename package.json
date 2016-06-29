@@ -26,10 +26,10 @@
   "dependencies": {
     "async": "^1.0.0",
     "debug": "^2.2.0",
-    "lei-utils": "^1.0.8"
+    "lei-utils": "^2.1.0"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
-    "should": "^6.0.3"
+    "should": "^9.0.2"
   }
 }
