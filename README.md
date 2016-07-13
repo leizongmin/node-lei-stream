@@ -7,6 +7,9 @@ Read/Write Stream
 npm install lei-stream --save
 ```
 
+**需要 Node.js v4.0.0 或更改版本**
+
+
 ## readLine 按行读取流
 
 使用方法1：
