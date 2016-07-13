@@ -156,4 +156,17 @@ describe('ReadLineStream', function () {
 
   });
 
+  it('#9 simple - error', function (done) {
+
+    let counter = 0;
+    stream.readLine(path.resolve(__dirname, 'files/json_small.txt.not_exists')).go(function (data, next) {
+      counter++;
+      next();
+    }, function (err) {
+      err.code.should.equal('ENOENT');
+      done();
+    });
+
+  });
+
 });
