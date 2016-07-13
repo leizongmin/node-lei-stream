@@ -1,13 +1,15 @@
+'use strict';
+
 /**
  * lei-stream
  *
  * @author Zongmin Lei <leizongmin@gmail.com>
  */
 
-var path = require('path');
-var fs = require('fs');
-var stream = require('../');
-var should = require('should');
+const path = require('path');
+const fs = require('fs');
+const stream = require('../');
+const should = require('should');
 
 describe('WriteLineStream', function () {
 
@@ -17,10 +19,10 @@ describe('WriteLineStream', function () {
       fs.unlinkSync(path.resolve(__dirname, 'files/write_1.log'));
     } catch (err) {}
 
-    var s = stream.writeLine(path.resolve(__dirname, 'files/write_1.log'), {
+    const s = stream.writeLine(path.resolve(__dirname, 'files/write_1.log'), {
       encoding: 'json'
     });
-    for (var i = 0; i < 200; i++) {
+    for (let i = 0; i < 200; i++) {
       s.write({env: process.env, time: new Date()});
     }
     s.end(function () {
@@ -42,11 +44,11 @@ describe('WriteLineStream', function () {
       fs.unlinkSync(path.resolve(__dirname, 'files/write_2.log'));
     } catch (err) {}
 
-    var s = stream.writeLine(path.resolve(__dirname, 'files/write_2.log'), {
+    const s = stream.writeLine(path.resolve(__dirname, 'files/write_2.log'), {
       encoding: 'json',
       cacheLines: 10
     });
-    for (var i = 0; i < 200; i++) {
+    for (let i = 0; i < 200; i++) {
       s.write({env: process.env, time: new Date()});
     }
     s.end(function () {

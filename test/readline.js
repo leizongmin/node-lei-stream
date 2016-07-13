@@ -1,20 +1,22 @@
+'use strict';
+
 /**
  * lei-stream
  *
  * @author Zongmin Lei <leizongmin@gmail.com>
  */
 
-var path = require('path');
-var fs = require('fs');
-var stream = require('../');
-var should = require('should');
+const path = require('path');
+const fs = require('fs');
+const stream = require('../');
+const should = require('should');
 
 describe('ReadLineStream', function () {
 
   it('#1 autoNext=false', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')));
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')));
     s.on('data', function (data) {
       counter++;
       s.next();
@@ -28,8 +30,8 @@ describe('ReadLineStream', function () {
 
   it('#2 autoNext=true', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
       autoNext: true
     });
     s.on('data', function (data) {
@@ -44,8 +46,8 @@ describe('ReadLineStream', function () {
 
   it('#3 big file, autoNext=false', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')));
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')));
     s.on('data', function (data) {
       counter++;
       s.next();
@@ -59,8 +61,8 @@ describe('ReadLineStream', function () {
 
   it('#4 big file, autoNext=true', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')), {
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_big.txt')), {
       autoNext: true
     });
     s.on('data', function (data) {
@@ -75,8 +77,8 @@ describe('ReadLineStream', function () {
 
     it('#5 big number file, autoNext=false', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')));
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')));
     s.on('data', function (data) {
       counter++;
       s.next();
@@ -90,8 +92,8 @@ describe('ReadLineStream', function () {
 
   it('#6 big number file, autoNext=true', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')), {
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')), {
       autoNext: true
     });
     s.on('data', function (data) {
@@ -106,9 +108,9 @@ describe('ReadLineStream', function () {
 
   it('#7 autoNext=true, custom encoding', function (done) {
 
-    var counter = 0;
-    var counter2 = 0;
-    var s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
+    let counter = 0;
+    let counter2 = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
       autoNext: true,
       encoding: function (str) {
         counter2++;
@@ -128,8 +130,8 @@ describe('ReadLineStream', function () {
 
   it('#8 filename', function (done) {
 
-    var counter = 0;
-    var s = stream.readLine(path.resolve(__dirname, 'files/json_small.txt'));
+    let counter = 0;
+    const s = stream.readLine(path.resolve(__dirname, 'files/json_small.txt'));
     s.on('data', function (data) {
       counter++;
       s.next();
@@ -143,7 +145,7 @@ describe('ReadLineStream', function () {
 
   it('#9 simple', function (done) {
 
-    var counter = 0;
+    let counter = 0;
     stream.readLine(path.resolve(__dirname, 'files/json_small.txt')).go(function (data, next) {
       counter++;
       next();

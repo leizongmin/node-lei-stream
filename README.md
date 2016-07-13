@@ -12,9 +12,11 @@ npm install lei-stream --save
 使用方法1：
 
 ```javascript
-var readLine = require('lei-stream').readLine;
+'use strict';
 
-readLine('./myfile.txt').go(function (data, next) {
+const readLine = require('lei-stream').readLine;
+
+readLine('./myfile.txt').go((data, next) => {
   console.log(data);
   next();
 }, function () {
@@ -25,11 +27,13 @@ readLine('./myfile.txt').go(function (data, next) {
 使用方法2：
 
 ```javascript
-var fs = require('fs');
-var readLine = require('lei-stream').readLine;
+'use strict';
+
+const fs = require('fs');
+const readLine = require('lei-stream').readLine;
 
 // readLineStream第一个参数为ReadStream实例，也可以为文件名
-var s = readLine(fs.createReadStream('./myfile.txt'), {
+const s = readLine(fs.createReadStream('./myfile.txt'), {
   // 换行符，默认\n
   newline: '\n',
   // 是否自动读取下一行，默认false
@@ -41,14 +45,19 @@ var s = readLine(fs.createReadStream('./myfile.txt'), {
 });
 
 // 读取到一行数据时触发data事件
-s.on('data', function (data) {
+s.on('data', (data) => {
   console.log(data);
   s.next();
 });
 
 // 流结束时触发end事件
-s.on('end', function () {
+s.on('end', () => {
   console.log('end');
+});
+
+// 读取时出错
+s.on('error', (err) => {
+  console.error(err);
 });
 ```
 
@@ -57,11 +66,13 @@ s.on('end', function () {
 按行写流
 
 ```javascript
-var fs = require('fs');
-var writeLineStream = require('lei-stream').writeLine;
+'use strict';
+
+const fs = require('fs');
+const writeLineStream = require('lei-stream').writeLine;
 
 // writeLineStream第一个参数为ReadStream实例，也可以为文件名
-var s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
+const s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
   // 换行符，默认\n
   newline: '\n',
   // 编码器，可以为函数或字符串（内置编码器：json，base64），默认null
@@ -73,15 +84,20 @@ var s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
 });
 
 // 写一行
-s.write(data, function () {
+s.write(data, () => {
   // 回调函数可选
   console.log('wrote');
 });
 
 // 结束
-s.end(function () {
+s.end(() => {
   // 回调函数可选
   console.log('end');
+});
+
+// 写时出错
+s.on('error', (err) => {
+  console.error(err);
 });
 ```
 
@@ -90,7 +106,7 @@ s.end(function () {
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015 Zongmin Lei <leizongmin@gmail.com>
+Copyright (c) 2015-2016 Zongmin Lei <leizongmin@gmail.com>
 http://ucdok.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
