@@ -93,14 +93,18 @@ describe('ReadLineStream', function () {
   it('#6 big number file, autoNext=true', function (done) {
 
     let counter = 0;
+    let readData = '';
     const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/number_big.txt')), {
-      autoNext: true
+      autoNext: true,
+      newline: '\n',
     });
     s.on('data', function (data) {
       counter++;
+      readData += data + '\n';
     });
     s.on('end', function () {
       counter.should.equal(1000000);
+      readData.trim().should.equal(fs.readFileSync(path.resolve(__dirname, 'files/number_big.txt')).toString().trim());
       done();
     });
 
