@@ -104,6 +104,29 @@ s.on('error', (err) => {
 });
 ```
 
+
+## TailStream
+
+监听文件新增内容变化的流（返回的是一个`Readable Stream`,具体可参考 Node.js API 文档）
+
+```javascript
+'use strict';
+
+const tailStream = require('lei-stream').tailStream;
+
+// 创建流
+const s = tailStream('./myfile.txt', {
+  position: 'end', // end表示监听之前先定位到文件末尾,否则会先读取出文件之前的所有内容再开始监听
+});
+
+// 有新内容会触发data事件
+s.on('data', data => {
+  console.log(data);
+});
+````
+
+
+
 ## License
 
 ```
