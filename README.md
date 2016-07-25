@@ -14,7 +14,7 @@ npm install lei-stream --save
 
 使用方法1：
 
-```javascript``
+```javascript
 'use strict';
 
 const readLine = require('lei-stream').readLine;
