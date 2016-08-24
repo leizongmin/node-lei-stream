@@ -173,4 +173,35 @@ describe('ReadLineStream', function () {
 
   });
 
+  it('#10 toString=true', function (done) {
+
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')));
+    s.on('data', function (data) {
+      data.should.be.String();
+      counter++;
+      s.next();
+    });
+    s.on('end', function () {
+      done();
+    });
+
+  });
+
+  it('#11 toString=false', function (done) {
+
+    let counter = 0;
+    const s = stream.readLine(fs.createReadStream(path.resolve(__dirname, 'files/json_small.txt')), {
+      toString: false
+    });
+    s.on('data', function (data) {
+      data.should.not.be.String();
+      counter++;
+      s.next();
+    });
+    s.on('end', function () {
+      done();
+    });
+
+  });
 });
