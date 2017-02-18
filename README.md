@@ -21,7 +21,7 @@
 [license-image]: https://img.shields.io/npm/l/lei-stream.svg
 
 # lei-stream
-Read/Write Stream 按行读写流
+Read/Write Stream line by line 按行读写流
 ## 安装
 
 ```bash
