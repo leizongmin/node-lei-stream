@@ -4,7 +4,7 @@ Read/Write Stream
 ## 安装
 
 ```bash
-npm install lei-stream --save
+$ npm install lei-stream --save
 ```
 
 **需要 Node.js v4.0.0 或更改版本**
