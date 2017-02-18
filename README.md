@@ -82,7 +82,7 @@ const s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
   encoding: function (data) {
     return JSON.stringify(data);
   },
-  // 缓存的行数，默认为0（表示不缓存），此选项主要用于优化写文件性能，当数量缓存的内容超过该数量时再一次性写入到流中，可以提高写速度
+  // 缓存的行数，默认为0（表示不缓存），此选项主要用于优化写文件性能，写入的内容会先存储到缓存中，当内容超过指定数量时再一次性写入到流中，可以提高写速度
   cacheLines: 0
 });
 
