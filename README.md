@@ -74,7 +74,7 @@ s.on('error', (err) => {
 const fs = require('fs');
 const writeLineStream = require('lei-stream').writeLine;
 
-// writeLineStream第一个参数为ReadStream实例，也可以为文件名
+// writeLineStream第一个参数为WriteStream实例，也可以为文件名
 const s = writeLineStream(fs.createWriteStream('./myfile.txt'), {
   // 换行符，默认\n
   newline: '\n',
