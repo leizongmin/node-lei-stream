@@ -25,7 +25,7 @@
   "homepage": "https://github.com/leizongmin/node-lei-stream",
   "dependencies": {
     "async": "^2.1.4",
-    "debug": "^2.6.1",
+    "debug": "^2.6.3",
     "lei-utils": "^3.1.0"
   },
   "devDependencies": {
