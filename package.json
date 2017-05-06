@@ -1,6 +1,6 @@
 {
   "name": "lei-stream",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Read/Write Stream",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
