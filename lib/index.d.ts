@@ -12,7 +12,7 @@ export type ReadStream = string | NodeJS.ReadableStream | NodeJS.ReadWriteStream
 export type WriteStream = string | NodeJS.WritableStream | NodeJS.ReadWriteStream;
 
 /** 数据编码方法 */
-export type EncodingMethod = 'json' | 'base64' | ((data: string | buffer) => string | Buffer);
+export type EncodingMethod = 'json' | 'base64' | ((data: string | Buffer) => string | Buffer);
 
 export interface ReadLineStreamOptions {
   /** 换行符 */
@@ -32,7 +32,7 @@ export interface ReadLineStream extends NodeJS.EventEmitter {
   /**
    * 出错
    */
-  on(event: 'error', callback: (err: Error) => void): void;
+  on(event: 'error', callback: (err: Error) => void): this;
 
   /**
    * 读取到一行数据
@@ -76,7 +76,7 @@ export interface WriteLineStream extends NodeJS.EventEmitter {
   /**
    * 出错
    */
-  on(event: 'error', callback: (err: Error) => void): void;
+  on(event: 'error', callback: (err: Error) => void): this;
 
   /**
    * 写数据
@@ -101,7 +101,7 @@ export function writeLine(stream: WriteStream, options?: WriteLineStreamOptions)
 
 export interface TailStreamOptions {
   /** 文件名 */
-  file: string;
+  file?: string;
   /** 开始位置 */
   position?: number | 'end';
 }
@@ -119,4 +119,4 @@ export interface TailStream extends NodeJS.ReadableStream {
 /**
  * 监听文件新增内容变化的流
  */
-export function tailStream(file: string, options: TailStreamOptions): TailStream;
+export function tailStream(file: string, options?: TailStreamOptions): TailStream;
