@@ -29,7 +29,7 @@
   "homepage": "https://github.com/leizongmin/node-lei-stream",
   "dependencies": {
     "@types/node": "^7.0.18",
-    "async": "^2.1.4",
+    "async": "^2.4.1",
     "debug": "^2.6.1",
     "lei-utils": "^3.1.0"
   },
