@@ -28,13 +28,13 @@
   },
   "homepage": "https://github.com/leizongmin/node-lei-stream",
   "dependencies": {
-    "@types/node": "^7.0.18",
+    "@types/node": "^8.5.2",
     "async": "^2.1.4",
-    "debug": "^2.6.1",
+    "debug": "^3.1.0",
     "lei-utils": "^3.1.0"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
-    "should": "^11.2.0"
+    "mocha": "^4.0.1",
+    "should": "^13.1.3"
   }
 }
