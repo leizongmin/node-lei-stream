@@ -21,6 +21,8 @@
 [license-image]: https://img.shields.io/npm/l/lei-stream.svg
 
 # lei-stream
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/leizongmin/node-lei-stream.svg)](https://greenkeeper.io/)
 Read/Write Stream line by line 按行读写流
 ## 安装
 
